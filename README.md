@@ -70,7 +70,7 @@ That separation is what later chapters build on for safer execution, permissions
   <img src="./assets/roadmap.svg" alt="Build a Coding Agent learning roadmap" width="100%" />
 </p>
 
-The first six chapters are implemented. **`06-context-management` is the next checkpoint.**
+The first seven chapters are implemented. **`07-planning` is the next checkpoint.**
 
 | Chapter | What you build | Status | Guide |
 | --- | --- | :---: | --- |
@@ -80,8 +80,8 @@ The first six chapters are implemented. **`06-context-management` is the next ch
 | [`03-filesystem`](./03-filesystem) | Workspace-scoped file listing, reading, and writing | ✅ | [mission](./docs/ROADMAP_GUIDE.md#03--filesystem) |
 | [`04-shell-execution`](./04-shell-execution) | Constrained development command execution | ✅ | [mission](./docs/ROADMAP_GUIDE.md#04--shell-execution) |
 | [`05-code-search`](./05-code-search) | Find relevant code without reading the whole repository | ✅ | [mission](./docs/ROADMAP_GUIDE.md#05--code-search) |
-| `06-context-management` | Spend context on the files that matter | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#06--context-management) |
-| `07-planning` | Separate planning from execution | planned | [mission](./docs/ROADMAP_GUIDE.md#07--planning) |
+| [`06-context-management`](./06-context-management) | Keep recent complete tool exchanges inside an explicit context budget | ✅ | [mission](./docs/ROADMAP_GUIDE.md#06--context-management) |
+| `07-planning` | Separate planning from execution | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#07--planning) |
 | `08-git-diff` | Inspect and reason about changes | planned | [mission](./docs/ROADMAP_GUIDE.md#08--git-diff) |
 | `09-patch-and-rollback` | Make edits reversible | planned | [mission](./docs/ROADMAP_GUIDE.md#09--patch--rollback) |
 | `10-sandbox` | Isolate dangerous operations | planned | [mission](./docs/ROADMAP_GUIDE.md#10--sandbox) |
@@ -154,11 +154,11 @@ Then move forward one chapter at a time.
 
 | Early tutorial | Later system |
 | --- | --- |
-| A list of messages | Token-aware context selection |
+| An ever-growing list of messages | A bounded context window, then compression |
 | A few hard-coded tools | A permissioned tool router |
 | Direct file replacement | Patches, diffs, and rollback |
 | Local command allowlist | Isolated execution sandbox |
-| One loop | Plans, skills, and focused subagents |
+| One opportunistic loop | Plans, skills, and focused subagents |
 | “It seems to work” | Reproducible eval tasks |
 
 The code grows because the **failure modes** grow. Every abstraction in the later chapters should be traceable back to a concrete problem you already saw in a smaller version.
@@ -182,6 +182,7 @@ The code grows because the **failure modes** grow. Every abstraction in the late
 ├── 03-filesystem/
 ├── 04-shell-execution/
 ├── 05-code-search/
+├── 06-context-management/
 ├── assets/
 │   ├── architecture.svg
 │   ├── hero.svg
