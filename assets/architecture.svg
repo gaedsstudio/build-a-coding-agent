@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="650" viewBox="0 0 1400 650" role="img" aria-labelledby="title desc">
+  <title id="title">How a coding agent works</title>
+  <desc id="desc">A minimal architecture diagram showing user input, agent loop, tool router, workspace, results, and later modules.</desc>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8Z" fill="#58A6FF"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="650" rx="20" fill="#0D1117"/>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+    <text x="54" y="62" font-size="32" font-weight="750" fill="#F0F6FC">How a coding agent works</text>
+    <text x="54" y="92" font-size="15" fill="#8B949E">The model does not “have tools.” Your program gives it a controlled way to request them.</text>
+
+    <g transform="translate(54 122)" font-size="12">
+      <circle cx="7" cy="7" r="5" fill="#58A6FF"/><text x="20" y="11" fill="#8B949E">implemented now</text>
+      <rect x="132" y="1" width="14" height="12" rx="3" fill="none" stroke="#6E7681" stroke-dasharray="4 3"/><text x="156" y="11" fill="#8B949E">later chapters</text>
+    </g>
+
+    <g transform="translate(350 164)">
+      <rect width="700" height="94" rx="14" fill="#0D1117" stroke="#30363D" stroke-dasharray="6 6"/>
+      <text x="24" y="25" font-size="11" letter-spacing="1.7" fill="#6E7681">LATER CHAPTERS</text>
+
+      <g transform="translate(24 38)">
+        <rect width="194" height="36" rx="8" fill="#161B22"/>
+        <text x="16" y="23" font-size="13" fill="#B1BAC4">Context manager</text>
+      </g>
+      <g transform="translate(253 38)">
+        <rect width="194" height="36" rx="8" fill="#161B22"/>
+        <text x="16" y="23" font-size="13" fill="#B1BAC4">Planner</text>
+      </g>
+      <g transform="translate(482 38)">
+        <rect width="194" height="36" rx="8" fill="#161B22"/>
+        <text x="16" y="23" font-size="13" fill="#B1BAC4">Skills / subagents</text>
+      </g>
+    </g>
+    <path d="M700 258V292" stroke="#6E7681" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+
+    <g transform="translate(54 320)">
+      <g>
+        <rect width="174" height="112" rx="14" fill="#161B22" stroke="#30363D"/>
+        <text x="18" y="31" font-size="15" font-weight="700" fill="#F0F6FC">User</text>
+        <text x="18" y="58" font-size="13" fill="#8B949E">“Fix the bug.”</text>
+        <text x="18" y="81" font-size="13" fill="#8B949E">“Add a feature.”</text>
+      </g>
+      <line x1="182" y1="56" x2="228" y2="56" stroke="#58A6FF" stroke-width="2" marker-end="url(#a)"/>
+
+      <g transform="translate(240)">
+        <rect width="202" height="112" rx="14" fill="#111827" stroke="#58A6FF" stroke-width="2"/>
+        <circle cx="20" cy="28" r="5" fill="#58A6FF"/>
+        <text x="36" y="33" font-size="16" font-weight="700" fill="#F0F6FC">Agent loop</text>
+        <text x="20" y="62" font-size="13" fill="#B1BAC4">model → tool request</text>
+        <text x="20" y="85" font-size="13" fill="#B1BAC4">tool result → model</text>
+      </g>
+      <line x1="450" y1="56" x2="496" y2="56" stroke="#58A6FF" stroke-width="2" marker-end="url(#a)"/>
+
+      <g transform="translate(508)">
+        <rect width="202" height="112" rx="14" fill="#161B22" stroke="#30363D"/>
+        <text x="18" y="31" font-size="15" font-weight="700" fill="#F0F6FC">Tool router</text>
+        <text x="18" y="59" font-size="13" fill="#8B949E">validate request</text>
+        <text x="18" y="82" font-size="13" fill="#8B949E">choose executor</text>
+      </g>
+      <line x1="718" y1="56" x2="764" y2="56" stroke="#58A6FF" stroke-width="2" marker-end="url(#a)"/>
+
+      <g transform="translate(776)">
+        <rect width="220" height="112" rx="14" fill="#161B22" stroke="#30363D"/>
+        <text x="18" y="31" font-size="15" font-weight="700" fill="#F0F6FC">Workspace</text>
+        <text x="18" y="59" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="12" fill="#8B949E">read / write / run</text>
+        <text x="18" y="82" font-size="13" fill="#8B949E">bounded by your code</text>
+      </g>
+      <line x1="1004" y1="56" x2="1050" y2="56" stroke="#58A6FF" stroke-width="2" marker-end="url(#a)"/>
+
+      <g transform="translate(1062)">
+        <rect width="220" height="112" rx="14" fill="#161B22" stroke="#30363D"/>
+        <text x="18" y="31" font-size="15" font-weight="700" fill="#F0F6FC">Result</text>
+        <text x="18" y="59" font-size="13" fill="#8B949E">stdout, file content,</text>
+        <text x="18" y="82" font-size="13" fill="#8B949E">errors, diffs...</text>
+      </g>
+
+      <path d="M1172 120V166H342V120" fill="none" stroke="#58A6FF" stroke-width="2" marker-end="url(#a)"/>
+      <text x="756" y="190" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="12" letter-spacing="1.6" fill="#58A6FF">FEED THE RESULT BACK AND ITERATE</text>
+    </g>
+
+    <line x1="54" y1="558" x2="1346" y2="558" stroke="#21262D"/>
+    <g transform="translate(54 585)" font-size="13" fill="#8B949E">
+      <text x="0" y="0"><tspan font-weight="700" fill="#F0F6FC">01</tspan> Observe the codebase</text>
+      <text x="330" y="0"><tspan font-weight="700" fill="#F0F6FC">02</tspan> Request the smallest useful tool</text>
+      <text x="720" y="0"><tspan font-weight="700" fill="#F0F6FC">03</tspan> Validate + execute</text>
+      <text x="1010" y="0"><tspan font-weight="700" fill="#F0F6FC">04</tspan> Return evidence, not guesses</text>
+    </g>
+  </g>
+</svg>
