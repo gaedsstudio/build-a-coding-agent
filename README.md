@@ -70,7 +70,7 @@ That separation is what later chapters build on for safer execution, permissions
   <img src="./assets/roadmap.svg" alt="Build a Coding Agent learning roadmap" width="100%" />
 </p>
 
-The first seven chapters are implemented. **`07-planning` is the next checkpoint.**
+The first eight chapters are implemented. **`08-git-diff` is the next checkpoint.**
 
 | Chapter | What you build | Status | Guide |
 | --- | --- | :---: | --- |
@@ -81,8 +81,8 @@ The first seven chapters are implemented. **`07-planning` is the next checkpoint
 | [`04-shell-execution`](./04-shell-execution) | Constrained development command execution | ✅ | [mission](./docs/ROADMAP_GUIDE.md#04--shell-execution) |
 | [`05-code-search`](./05-code-search) | Find relevant code without reading the whole repository | ✅ | [mission](./docs/ROADMAP_GUIDE.md#05--code-search) |
 | [`06-context-management`](./06-context-management) | Keep recent complete tool exchanges inside an explicit context budget | ✅ | [mission](./docs/ROADMAP_GUIDE.md#06--context-management) |
-| `07-planning` | Separate planning from execution | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#07--planning) |
-| `08-git-diff` | Inspect and reason about changes | planned | [mission](./docs/ROADMAP_GUIDE.md#08--git-diff) |
+| [`07-planning`](./07-planning) | Keep a revisable plan with status and evidence | ✅ | [mission](./docs/ROADMAP_GUIDE.md#07--planning) |
+| `08-git-diff` | Inspect and reason about changes | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#08--git-diff) |
 | `09-patch-and-rollback` | Make edits reversible | planned | [mission](./docs/ROADMAP_GUIDE.md#09--patch--rollback) |
 | `10-sandbox` | Isolate dangerous operations | planned | [mission](./docs/ROADMAP_GUIDE.md#10--sandbox) |
 | `11-permissions` | Add explicit approval boundaries | planned | [mission](./docs/ROADMAP_GUIDE.md#11--permissions) |
@@ -183,6 +183,7 @@ The code grows because the **failure modes** grow. Every abstraction in the late
 ├── 04-shell-execution/
 ├── 05-code-search/
 ├── 06-context-management/
+├── 07-planning/
 ├── assets/
 │   ├── architecture.svg
 │   ├── hero.svg
