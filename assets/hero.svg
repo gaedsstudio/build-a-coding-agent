@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-labelledby="title desc">
+  <title id="title">Build a Coding Agent From Scratch</title>
+  <desc id="desc">Minimal dark README hero showing a coding agent loop from goal to tools and results.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#161B22" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8Z" fill="#58A6FF"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="480" rx="24" fill="#0D1117"/>
+  <rect width="1600" height="480" rx="24" fill="url(#grid)" opacity=".72"/>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+    <g transform="translate(72 62)">
+      <rect width="42" height="42" rx="10" fill="#161B22" stroke="#30363D"/>
+      <text x="21" y="27" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="18" font-weight="700" fill="#58A6FF">&gt;_</text>
+      <text x="58" y="17" font-size="13" font-weight="700" letter-spacing="2.4" fill="#8B949E">BUILD-A-CODING-AGENT</text>
+      <text x="58" y="38" font-size="12" letter-spacing="1.6" fill="#484F58">OPEN SOURCE · PYTHON · STEP BY STEP</text>
+    </g>
+
+    <text x="72" y="185" font-size="62" font-weight="750" letter-spacing="-2.2" fill="#F0F6FC">Build a Coding Agent</text>
+    <text x="72" y="252" font-size="62" font-weight="750" letter-spacing="-2.2" fill="#F0F6FC">From Scratch</text>
+    <text x="74" y="303" font-size="22" fill="#B1BAC4">Learn the machinery by building it one small layer at a time.</text>
+
+    <g font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="14" fill="#8B949E">
+      <text x="74" y="356">tool calling</text>
+      <circle cx="188" cy="351" r="2.5" fill="#58A6FF"/>
+      <text x="203" y="356">filesystem</text>
+      <circle cx="293" cy="351" r="2.5" fill="#58A6FF"/>
+      <text x="308" y="356">shell</text>
+      <circle cx="357" cy="351" r="2.5" fill="#58A6FF"/>
+      <text x="372" y="356">context</text>
+      <circle cx="445" cy="351" r="2.5" fill="#58A6FF"/>
+      <text x="460" y="356">skills</text>
+      <circle cx="511" cy="351" r="2.5" fill="#58A6FF"/>
+      <text x="526" y="356">evals</text>
+    </g>
+
+    <line x1="74" y1="401" x2="126" y2="401" stroke="#58A6FF" stroke-width="2"/>
+    <text x="142" y="406" font-size="12" letter-spacing="2.2" fill="#6E7681">SMALL BUILD. BIG UNDERSTANDING.</text>
+  </g>
+
+  <g transform="translate(870 56)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+    <text x="0" y="16" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="12" letter-spacing="1.8" fill="#6E7681">THE CORE LOOP</text>
+
+    <g transform="translate(0 46)">
+      <rect width="170" height="116" rx="14" fill="#0D1117" stroke="#30363D"/>
+      <text x="18" y="30" font-size="16" font-weight="700" fill="#F0F6FC">Goal</text>
+      <text x="18" y="58" font-size="13" fill="#8B949E">Fix a bug, add a</text>
+      <text x="18" y="79" font-size="13" fill="#8B949E">feature, or inspect</text>
+      <text x="18" y="100" font-size="13" fill="#8B949E">a codebase.</text>
+    </g>
+
+    <line x1="178" y1="104" x2="226" y2="104" stroke="#58A6FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(238 34)">
+      <rect width="202" height="140" rx="14" fill="#111827" stroke="#58A6FF" stroke-width="2"/>
+      <circle cx="22" cy="28" r="5" fill="#58A6FF"/>
+      <text x="39" y="34" font-size="17" font-weight="700" fill="#F0F6FC">Agent Loop</text>
+      <text x="20" y="66" font-size="13" fill="#B1BAC4">1. observe</text>
+      <text x="20" y="89" font-size="13" fill="#B1BAC4">2. choose a tool</text>
+      <text x="20" y="112" font-size="13" fill="#B1BAC4">3. act + evaluate</text>
+    </g>
+
+    <line x1="449" y1="104" x2="497" y2="104" stroke="#58A6FF" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <g transform="translate(510 46)">
+      <rect width="170" height="116" rx="14" fill="#0D1117" stroke="#30363D"/>
+      <text x="18" y="30" font-size="16" font-weight="700" fill="#F0F6FC">Tools</text>
+      <text x="18" y="57" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="12" fill="#8B949E">read_file</text>
+      <text x="18" y="78" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="12" fill="#8B949E">write_file</text>
+      <text x="18" y="99" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="12" fill="#8B949E">run_command</text>
+    </g>
+
+    <path d="M595 168V198H337V180" fill="none" stroke="#58A6FF" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="399" y="219" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="11" letter-spacing="1.7" fill="#58A6FF">RESULT → CONTEXT → NEXT STEP</text>
+
+    <g transform="translate(0 264)">
+      <rect width="680" height="120" rx="12" fill="#010409" stroke="#21262D"/>
+      <rect width="680" height="34" rx="12" fill="#161B22"/>
+      <circle cx="19" cy="17" r="4" fill="#FF7B72"/>
+      <circle cx="34" cy="17" r="4" fill="#D29922"/>
+      <circle cx="49" cy="17" r="4" fill="#3FB950"/>
+      <text x="74" y="21" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="11" fill="#6E7681">agent.py</text>
+
+      <g font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="13">
+        <text x="20" y="59" fill="#6E7681">$</text>
+        <text x="38" y="59" fill="#C9D1D9">python agent.py</text>
+        <text x="20" y="84" fill="#6E7681">&gt;</text>
+        <text x="38" y="84" fill="#C9D1D9">Using tools...</text>
+        <text x="20" y="108" fill="#3FB950">&gt;</text>
+        <text x="38" y="108" fill="#3FB950">Task complete.</text>
+      </g>
+    </g>
+  </g>
+</svg>
