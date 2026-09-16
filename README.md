@@ -70,7 +70,7 @@ That separation is what later chapters build on for safer execution, permissions
   <img src="./assets/roadmap.svg" alt="Build a Coding Agent learning roadmap" width="100%" />
 </p>
 
-The first eight chapters are implemented. **`08-git-diff` is the next checkpoint.**
+The first nine chapters are implemented. **`09-patch-and-rollback` is the next checkpoint.**
 
 | Chapter | What you build | Status | Guide |
 | --- | --- | :---: | --- |
@@ -82,8 +82,8 @@ The first eight chapters are implemented. **`08-git-diff` is the next checkpoint
 | [`05-code-search`](./05-code-search) | Find relevant code without reading the whole repository | ✅ | [mission](./docs/ROADMAP_GUIDE.md#05--code-search) |
 | [`06-context-management`](./06-context-management) | Keep recent complete tool exchanges inside an explicit context budget | ✅ | [mission](./docs/ROADMAP_GUIDE.md#06--context-management) |
 | [`07-planning`](./07-planning) | Keep a revisable plan with status and evidence | ✅ | [mission](./docs/ROADMAP_GUIDE.md#07--planning) |
-| `08-git-diff` | Inspect and reason about changes | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#08--git-diff) |
-| `09-patch-and-rollback` | Make edits reversible | planned | [mission](./docs/ROADMAP_GUIDE.md#09--patch--rollback) |
+| [`08-git-diff`](./08-git-diff) | Inspect the exact tracked patch after editing | ✅ | [mission](./docs/ROADMAP_GUIDE.md#08--git-diff) |
+| `09-patch-and-rollback` | Make edits reversible | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#09--patch--rollback) |
 | `10-sandbox` | Isolate dangerous operations | planned | [mission](./docs/ROADMAP_GUIDE.md#10--sandbox) |
 | `11-permissions` | Add explicit approval boundaries | planned | [mission](./docs/ROADMAP_GUIDE.md#11--permissions) |
 | `12-subagents` | Delegate focused tasks | planned | [mission](./docs/ROADMAP_GUIDE.md#12--subagents) |
@@ -156,7 +156,7 @@ Then move forward one chapter at a time.
 | --- | --- |
 | An ever-growing list of messages | A bounded context window, then compression |
 | A few hard-coded tools | A permissioned tool router |
-| Direct file replacement | Patches, diffs, and rollback |
+| Direct file replacement | Diffs, checkpoints, patches, and rollback |
 | Local command allowlist | Isolated execution sandbox |
 | One opportunistic loop | Plans, skills, and focused subagents |
 | “It seems to work” | Reproducible eval tasks |
@@ -184,6 +184,7 @@ The code grows because the **failure modes** grow. Every abstraction in the late
 ├── 05-code-search/
 ├── 06-context-management/
 ├── 07-planning/
+├── 08-git-diff/
 ├── assets/
 │   ├── architecture.svg
 │   ├── hero.svg
