@@ -15,13 +15,13 @@ The roadmap is intentionally sequential: each chapter introduces a failure mode 
 ## v0.2 — Understand a repository
 
 - [x] 05 — code search with bounded results
-- [ ] 06 — token-aware context selection ← **next**
-- [ ] context budget report
-- [ ] pinned/recent observations
+- [x] 06 — bounded context window
+- [x] approximate context budget report
+- [x] pinned task + recent complete tool turns
 
 ## v0.3 — Edit with evidence
 
-- [ ] 07 — revisable planning
+- [ ] 07 — revisable planning ← **next**
 - [ ] 08 — Git diff observation
 - [ ] 09 — patch application and rollback
 - [ ] test/fix loop
