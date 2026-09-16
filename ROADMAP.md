@@ -22,8 +22,8 @@ The roadmap is intentionally sequential: each chapter introduces a failure mode 
 ## v0.3 — Edit with evidence
 
 - [x] 07 — revisable planning
-- [ ] 08 — Git diff observation ← **next**
-- [ ] 09 — patch application and rollback
+- [x] 08 — Git diff observation
+- [ ] 09 — patch application and rollback ← **next**
 - [ ] test/fix loop
 
 ## v0.4 — Control execution
