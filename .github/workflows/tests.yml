@@ -5,12 +5,22 @@ on:
   pull_request:
 
 jobs:
-  pytest:
+  verify:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
       - run: pip install pytest
-      - run: pytest -q
+      - name: Compile every implemented chapter
+        run: python -m compileall -q 00-hello-agent 01-agent-loop 02-tool-calling 03-filesystem 04-shell-execution 05-code-search 06-context-management 07-planning 08-git-diff tests scripts
+      - name: Verify repository structure and safety invariants
+        run: python scripts/verify_repository.py
+      - name: Run regression tests
+        run: pytest -q
