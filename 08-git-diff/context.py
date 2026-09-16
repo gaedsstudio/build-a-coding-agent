@@ -9,6 +9,10 @@ from typing import Any
 Message = dict[str, Any]
 
 
+class ContextBudgetError(ValueError):
+    """Raised when mandatory context alone cannot fit in the configured budget."""
+
+
 def estimate_tokens(value: Any) -> int:
     if isinstance(value, str):
         text = value
@@ -58,7 +62,19 @@ class ContextWindow:
     def messages(self, extra_pinned: list[Message] | None = None) -> list[Message]:
         pinned = [*self._pinned, *(extra_pinned or [])]
         base_tokens = self._messages_tokens(pinned)
-        remaining = max(0, self.max_tokens - base_tokens)
+        if base_tokens > self.max_tokens:
+            self._last_report = ContextReport(
+                budget_tokens=self.max_tokens,
+                estimated_tokens=base_tokens,
+                kept_turns=0,
+                dropped_turns=len(self._turns),
+            )
+            raise ContextBudgetError(
+                f"pinned context needs about {base_tokens} tokens but the budget is {self.max_tokens}; "
+                "increase AGENT_CONTEXT_TOKENS or shorten the task/plan"
+            )
+
+        remaining = self.max_tokens - base_tokens
         selected_reversed: list[list[Message]] = []
         selected_tokens = 0
 
