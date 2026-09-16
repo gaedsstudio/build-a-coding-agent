@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import re
 import shlex
@@ -116,24 +117,52 @@ class Workspace:
 
 
 ALLOWED_EXECUTABLES = {"python", "python3", "pytest", "git", "rg"}
+SENSITIVE_ENV_KEYS = {
+    "AGENT_API_KEY",
+    "OPENAI_API_KEY",
+    "ANTHROPIC_API_KEY",
+    "GITHUB_TOKEN",
+    "GH_TOKEN",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_SESSION_TOKEN",
+}
+
+
+def _subprocess_env() -> dict[str, str]:
+    env = os.environ.copy()
+    for key in SENSITIVE_ENV_KEYS:
+        env.pop(key, None)
+    return env
 
 
 def run_command(workspace: Workspace, command: str, timeout_seconds: int = 20) -> str:
     args = shlex.split(command)
     if not args:
         return "ERROR: empty command"
-    executable = Path(args[0]).name.lower()
+
+    requested = args[0]
+    if requested != Path(requested).name or "/" in requested or "\\" in requested:
+        return "ERROR: executable paths are not allowed; use a bare allowlisted command name"
+
+    executable = requested.lower()
     if executable not in ALLOWED_EXECUTABLES:
         return f"ERROR: executable is not allowed in this chapter: {executable}"
+
     timeout_seconds = max(1, min(int(timeout_seconds), 60))
     try:
         completed = subprocess.run(
-            args, cwd=workspace.root, capture_output=True, text=True,
-            timeout=timeout_seconds, shell=False,
+            args,
+            cwd=workspace.root,
+            capture_output=True,
+            text=True,
+            timeout=timeout_seconds,
+            shell=False,
+            env=_subprocess_env(),
         )
     except subprocess.TimeoutExpired:
         return f"ERROR: command timed out after {timeout_seconds}s"
     except FileNotFoundError:
         return f"ERROR: executable not found: {executable}"
+
     output = f"exit_code={completed.returncode}\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}"
     return output[:30_000] + ("\n... truncated ..." if len(output) > 30_000 else "")
