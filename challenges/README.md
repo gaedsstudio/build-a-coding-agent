@@ -9,8 +9,8 @@ Use these after completing the matching chapter. They are intentionally underspe
 | 3 | Reject symlink-based workspace escapes | 03 |
 | 4 | Add per-command timeouts and output budgets | 04 |
 | 5 | Respect `.gitignore` in code search | 05 |
-| 6 | Show a token/context budget report | 06 |
-| 7 | Make plans revisable after new evidence | 07 |
+| 6 | Pin one important observation so it survives normal context eviction | 06 |
+| 7 | Preserve completed steps across a plan revision | 07 |
 | 8 | Summarize a diff without rereading changed files | 08 |
 | 9 | Roll back one bad file but keep a good edit | 09 |
 | 10 | Enforce CPU/time/filesystem limits in isolation | 10 |
