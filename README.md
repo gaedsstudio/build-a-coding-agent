@@ -19,6 +19,7 @@
   <a href="#course">Course</a> ·
   <a href="./docs/ROADMAP_GUIDE.md">Chapter guide</a> ·
   <a href="./docs/PLAYBOOK.md">Playbook</a> ·
+  <a href="./docs/VERIFICATION.md">Verification</a> ·
   <a href="./challenges/README.md">Challenges</a>
 </p>
 
@@ -92,7 +93,7 @@ The first nine chapters are implemented. **`09-patch-and-rollback` is the next c
 | `15-evals` | Measure whether the agent is actually improving | planned | [mission](./docs/ROADMAP_GUIDE.md#15--evals) |
 | `16-full-agent` | Put the system together | planned | [mission](./docs/ROADMAP_GUIDE.md#16--full-agent) |
 
-Each chapter is a standalone checkpoint. The [Roadmap Guide](./docs/ROADMAP_GUIDE.md) gives every box a **goal, clear condition, trap, and boss challenge**. The [Playbook](./docs/PLAYBOOK.md) is the practical troubleshooting guide for search, reading, editing, verification, and bad agent loops.
+Each chapter is a standalone checkpoint. The [Roadmap Guide](./docs/ROADMAP_GUIDE.md) gives every box a **goal, clear condition, trap, and boss challenge**. The [Playbook](./docs/PLAYBOOK.md) is the practical troubleshooting guide for search, reading, editing, verification, and bad agent loops. The [Verification Guide](./docs/VERIFICATION.md) shows exactly what CI proves, what regressions are covered, and which safety boundaries still wait for later chapters.
 
 ### Play it like a course
 
@@ -194,7 +195,10 @@ The code grows because the **failure modes** grow. Every abstraction in the late
 ├── docs/
 │   ├── architecture.md
 │   ├── PLAYBOOK.md
-│   └── ROADMAP_GUIDE.md
+│   ├── ROADMAP_GUIDE.md
+│   └── VERIFICATION.md
+├── scripts/
+│   └── verify_repository.py
 ├── skills/
 ├── tests/
 ├── CONTRIBUTING.md
