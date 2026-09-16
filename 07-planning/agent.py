@@ -46,16 +46,30 @@ def execute(workspace: Workspace, plan: Plan, name: str, args: dict) -> str:
     raise ValueError(f"Unknown tool: {name}")
 
 
+def _context_budget() -> int:
+    raw = os.environ.get("AGENT_CONTEXT_TOKENS", "12000")
+    try:
+        return int(raw)
+    except ValueError as exc:
+        raise ValueError("AGENT_CONTEXT_TOKENS must be an integer") from exc
+
+
 def run(task: str) -> str:
     workspace = Workspace(Path(__file__).parent / "workspace")
     plan = Plan()
-    budget = int(os.environ.get("AGENT_CONTEXT_TOKENS", "12000"))
     debug = os.environ.get("AGENT_CONTEXT_DEBUG") == "1"
-    context = ContextWindow(SYSTEM, task, max_tokens=budget)
+
+    try:
+        context = ContextWindow(SYSTEM, task, max_tokens=_context_budget())
+    except ValueError as exc:
+        return f"ERROR: invalid context configuration: {exc}"
 
     for _ in range(40):
         plan_snapshot = [{"role": "system", "content": "Current plan state:\n" + plan.render()}]
-        messages = context.messages(extra_pinned=plan_snapshot)
+        try:
+            messages = context.messages(extra_pinned=plan_snapshot)
+        except ValueError as exc:
+            return f"ERROR: context budget exceeded: {exc}"
 
         if debug:
             print(f"[context] {context.report().line()}")
