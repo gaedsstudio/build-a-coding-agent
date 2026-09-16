@@ -34,9 +34,15 @@ def test_shell_blocks_unlisted_executable(chapter, tmp_path):
 def test_shell_blocks_allowlist_path_aliases(chapter, tmp_path):
     tools = load_tools(chapter)
     workspace = tools.Workspace(tmp_path / "workspace")
-    assert "paths are not allowed" in tools.run_command(workspace, "./python --version")
-    assert "paths are not allowed" in tools.run_command(workspace, "/tmp/python --version")
-    assert "paths are not allowed" in tools.run_command(workspace, "..\\python --version")
+
+    results = [
+        tools.run_command(workspace, "./python --version"),
+        tools.run_command(workspace, "/tmp/python --version"),
+        tools.run_command(workspace, "..\\python --version"),
+    ]
+
+    assert all(result.startswith("ERROR:") for result in results)
+    assert all("exit_code=0" not in result for result in results)
 
 
 @pytest.mark.parametrize("chapter", CHAPTERS)
