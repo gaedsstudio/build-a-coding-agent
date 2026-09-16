@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+
+from calculator import calculate
 from llm import chat
 
 
@@ -21,14 +23,6 @@ TOOLS = [
         },
     }
 ]
-
-
-def calculate(expression: str) -> str:
-    allowed = set("0123456789+-*/(). %")
-    if not expression or any(ch not in allowed for ch in expression):
-        raise ValueError("Expression contains unsupported characters.")
-    # No builtins are exposed. This chapter keeps the tool intentionally tiny.
-    return str(eval(expression, {"__builtins__": {}}, {}))
 
 
 def execute(name: str, arguments: dict) -> str:
@@ -56,8 +50,8 @@ def run(task: str) -> str:
 
         for call in calls:
             function = call["function"]
-            args = json.loads(function.get("arguments") or "{}")
             try:
+                args = json.loads(function.get("arguments") or "{}")
                 result = execute(function["name"], args)
             except Exception as exc:
                 result = f"ERROR: {type(exc).__name__}: {exc}"
