@@ -43,14 +43,29 @@ def execute(workspace: Workspace, name: str, args: dict) -> str:
     raise ValueError(f"Unknown tool: {name}")
 
 
+def _context_budget() -> int:
+    raw = os.environ.get("AGENT_CONTEXT_TOKENS", "12000")
+    try:
+        return int(raw)
+    except ValueError as exc:
+        raise ValueError("AGENT_CONTEXT_TOKENS must be an integer") from exc
+
+
 def run(task: str) -> str:
     workspace = Workspace(Path(__file__).parent / "workspace")
-    budget = int(os.environ.get("AGENT_CONTEXT_TOKENS", "12000"))
     debug_context = os.environ.get("AGENT_CONTEXT_DEBUG") == "1"
-    context = ContextWindow(SYSTEM, task, max_tokens=budget)
+
+    try:
+        context = ContextWindow(SYSTEM, task, max_tokens=_context_budget())
+    except ValueError as exc:
+        return f"ERROR: invalid context configuration: {exc}"
 
     for _ in range(30):
-        messages = context.messages()
+        try:
+            messages = context.messages()
+        except ValueError as exc:
+            return f"ERROR: context budget exceeded: {exc}"
+
         if debug_context:
             print(f"[context] {context.report().line()}")
 
@@ -74,7 +89,6 @@ def run(task: str) -> str:
                 "content": result,
             })
 
-        # Store the assistant request and its tool results as one atomic turn.
         context.add_turn(reply, tool_messages)
 
     return "Agent stopped after reaching the tool-step limit."
