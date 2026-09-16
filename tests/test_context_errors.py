@@ -1,5 +1,6 @@
 from pathlib import Path
 import importlib.util
+import sys
 
 import pytest
 
@@ -9,9 +10,11 @@ ROOT = Path(__file__).parents[1]
 
 def load_context(chapter: str):
     path = ROOT / chapter / "context.py"
-    spec = importlib.util.spec_from_file_location(f"{chapter.replace('-', '_')}_context_errors", path)
+    name = f"{chapter.replace('-', '_')}_context_errors"
+    spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
+    sys.modules[name] = module
     spec.loader.exec_module(module)
     return module
 
