@@ -17,8 +17,9 @@
   <a href="#start-here">Start here</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#course">Course</a> ·
-  <a href="./ROADMAP.md">Roadmap</a> ·
-  <a href="./CONTRIBUTING.md">Contributing</a>
+  <a href="./docs/ROADMAP_GUIDE.md">Chapter guide</a> ·
+  <a href="./docs/PLAYBOOK.md">Playbook</a> ·
+  <a href="./challenges/README.md">Challenges</a>
 </p>
 
 ---
@@ -69,29 +70,47 @@ That separation is what later chapters build on for safer execution, permissions
   <img src="./assets/roadmap.svg" alt="Build a Coding Agent learning roadmap" width="100%" />
 </p>
 
-The first five chapters are implemented today. `05-code-search` is next.
+The first six chapters are implemented. **`06-context-management` is the next checkpoint.**
 
-| Chapter | What you build | Status |
-| --- | --- | :---: |
-| [`00-hello-agent`](./00-hello-agent) | The smallest useful model call | ✅ |
-| [`01-agent-loop`](./01-agent-loop) | Persistent conversation state and a stop condition | ✅ |
-| [`02-tool-calling`](./02-tool-calling) | A real model → tool → result loop | ✅ |
-| [`03-filesystem`](./03-filesystem) | Workspace-scoped file listing, reading, and writing | ✅ |
-| [`04-shell-execution`](./04-shell-execution) | Constrained development command execution | ✅ |
-| `05-code-search` | Find relevant code without reading the whole repository | 🚧 |
-| `06-context-management` | Spend context on the files that matter | planned |
-| `07-planning` | Separate planning from execution | planned |
-| `08-git-diff` | Inspect and reason about changes | planned |
-| `09-patch-and-rollback` | Make edits reversible | planned |
-| `10-sandbox` | Isolate dangerous operations | planned |
-| `11-permissions` | Add explicit approval boundaries | planned |
-| `12-subagents` | Delegate focused tasks | planned |
-| `13-agent-skills` | Load reusable domain workflows | planned |
-| `14-context-compression` | Keep long-running sessions useful | planned |
-| `15-evals` | Measure whether the agent is actually improving | planned |
-| `16-full-agent` | Put the system together | planned |
+| Chapter | What you build | Status | Guide |
+| --- | --- | :---: | --- |
+| [`00-hello-agent`](./00-hello-agent) | The smallest useful model call | ✅ | [mission](./docs/ROADMAP_GUIDE.md#00--hello-agent) |
+| [`01-agent-loop`](./01-agent-loop) | Persistent conversation state and a stop condition | ✅ | [mission](./docs/ROADMAP_GUIDE.md#01--agent-loop) |
+| [`02-tool-calling`](./02-tool-calling) | A real model → tool → result loop | ✅ | [mission](./docs/ROADMAP_GUIDE.md#02--tool-calling) |
+| [`03-filesystem`](./03-filesystem) | Workspace-scoped file listing, reading, and writing | ✅ | [mission](./docs/ROADMAP_GUIDE.md#03--filesystem) |
+| [`04-shell-execution`](./04-shell-execution) | Constrained development command execution | ✅ | [mission](./docs/ROADMAP_GUIDE.md#04--shell-execution) |
+| [`05-code-search`](./05-code-search) | Find relevant code without reading the whole repository | ✅ | [mission](./docs/ROADMAP_GUIDE.md#05--code-search) |
+| `06-context-management` | Spend context on the files that matter | 🚧 | [mission](./docs/ROADMAP_GUIDE.md#06--context-management) |
+| `07-planning` | Separate planning from execution | planned | [mission](./docs/ROADMAP_GUIDE.md#07--planning) |
+| `08-git-diff` | Inspect and reason about changes | planned | [mission](./docs/ROADMAP_GUIDE.md#08--git-diff) |
+| `09-patch-and-rollback` | Make edits reversible | planned | [mission](./docs/ROADMAP_GUIDE.md#09--patch--rollback) |
+| `10-sandbox` | Isolate dangerous operations | planned | [mission](./docs/ROADMAP_GUIDE.md#10--sandbox) |
+| `11-permissions` | Add explicit approval boundaries | planned | [mission](./docs/ROADMAP_GUIDE.md#11--permissions) |
+| `12-subagents` | Delegate focused tasks | planned | [mission](./docs/ROADMAP_GUIDE.md#12--subagents) |
+| `13-agent-skills` | Load reusable domain workflows | planned | [mission](./docs/ROADMAP_GUIDE.md#13--agent-skills) |
+| `14-context-compression` | Keep long-running sessions useful | planned | [mission](./docs/ROADMAP_GUIDE.md#14--context-compression) |
+| `15-evals` | Measure whether the agent is actually improving | planned | [mission](./docs/ROADMAP_GUIDE.md#15--evals) |
+| `16-full-agent` | Put the system together | planned | [mission](./docs/ROADMAP_GUIDE.md#16--full-agent) |
 
-Each chapter is a standalone checkpoint. You should be able to read the diff from the previous chapter and understand **why that extra machinery now exists**.
+Each chapter is a standalone checkpoint. The [Roadmap Guide](./docs/ROADMAP_GUIDE.md) gives every box a **goal, clear condition, trap, and boss challenge**. The [Playbook](./docs/PLAYBOOK.md) is the practical troubleshooting guide for search, reading, editing, verification, and bad agent loops.
+
+### Play it like a course
+
+```text
+read the chapter
+      ↓
+run the example
+      ↓
+break one assumption on purpose
+      ↓
+clear the checkpoint
+      ↓
+try the boss challenge
+      ↓
+move to the next box
+```
+
+If you can run a chapter but cannot explain its **trap**, you have not really cleared it yet.
 
 ## Start here
 
@@ -162,14 +181,18 @@ The code grows because the **failure modes** grow. Every abstraction in the late
 ├── 02-tool-calling/
 ├── 03-filesystem/
 ├── 04-shell-execution/
+├── 05-code-search/
 ├── assets/
 │   ├── architecture.svg
 │   ├── hero.svg
 │   └── roadmap.svg
-├── docs/
-│   └── architecture.md
-├── skills/
+├── challenges/
 │   └── README.md
+├── docs/
+│   ├── architecture.md
+│   ├── PLAYBOOK.md
+│   └── ROADMAP_GUIDE.md
+├── skills/
 ├── tests/
 ├── CONTRIBUTING.md
 ├── ROADMAP.md
