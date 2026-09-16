@@ -1,0 +1,9 @@
+[project]
+name = "build-a-coding-agent"
+version = "0.1.0"
+description = "Build a coding agent from scratch, one concept at a time."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
