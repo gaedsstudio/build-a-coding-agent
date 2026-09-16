@@ -2,6 +2,7 @@ from pathlib import Path
 import importlib.util
 import subprocess
 import sys
+
 import pytest
 
 
@@ -21,15 +22,26 @@ def load_chapter():
     return tools, diff_tool
 
 
+def run_git(path: Path, *args: str, capture_output: bool = False):
+    return subprocess.run(
+        ["git", *args],
+        cwd=path,
+        check=True,
+        capture_output=capture_output,
+        timeout=10,
+        shell=False,
+    )
+
+
 def init_repo(path: Path):
-    subprocess.run(["git", "init"], cwd=path, check=True, capture_output=True)
-    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=path, check=True)
-    subprocess.run(["git", "config", "user.name", "Test"], cwd=path, check=True)
+    run_git(path, "init", capture_output=True)
+    run_git(path, "config", "user.email", "test@example.com")
+    run_git(path, "config", "user.name", "Test")
 
 
 def commit_all(path: Path):
-    subprocess.run(["git", "add", "."], cwd=path, check=True)
-    subprocess.run(["git", "commit", "-m", "baseline"], cwd=path, check=True, capture_output=True)
+    run_git(path, "add", ".")
+    run_git(path, "commit", "-m", "baseline", capture_output=True)
 
 
 def test_git_diff_shows_tracked_edit(tmp_path):
